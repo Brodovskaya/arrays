@@ -1,9 +1,9 @@
 -------------------------------------------------------------------------------
 Test set: telran.util.ArraysTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0.064 s <<< FAILURE! -- in telran.util.ArraysTest
-telran.util.ArraysTest.insertTest -- Time elapsed: 0.007 s <<< FAILURE!
-org.opentest4j.AssertionFailedError: array contents differ at index [4], expected: <15> but was: <0>
+Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.060 s <<< FAILURE! -- in telran.util.ArraysTest
+telran.util.ArraysTest.insertTest -- Time elapsed: 0.005 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: array contents differ at index [3], expected: <-4> but was: <0>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
 	at org.junit.jupiter.api.AssertArrayEquals.failArraysNotEqual(AssertArrayEquals.java:440)
@@ -16,10 +16,15 @@ org.opentest4j.AssertionFailedError: array contents differ at index [4], expecte
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 
-telran.util.ArraysTest.removeTest -- Time elapsed: 0.002 s <<< ERROR!
-java.lang.ArrayIndexOutOfBoundsException: arraycopy: last source index 9 out of bounds for int[7]
-	at java.base/java.lang.System.arraycopy(Native Method)
-	at telran.util.Arrays.remove(Arrays.java:32)
+telran.util.ArraysTest.removeTest -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: array contents differ at index [0], expected: <10> but was: <0>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertArrayEquals.failArraysNotEqual(AssertArrayEquals.java:440)
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:241)
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:87)
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:83)
+	at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1281)
 	at telran.util.ArraysTest.removeTest(ArraysTest.java:38)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)

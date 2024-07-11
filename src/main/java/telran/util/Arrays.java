@@ -15,8 +15,8 @@ public static int[] add(int [] ar, int number){
 }
 public static int[] insert(int[] ar, int index, int number){
     
-    int [] res1 = new int [ar.length-index+1];
-    System.arraycopy(ar, 0, res1, 0, ar.length-index+1);
+    int [] res1 = new int [index];
+    System.arraycopy(ar, 0, res1, 0, index-1);
     add(res1, number);
     int [] res = java.util.Arrays.copyOf(res1, ar.length+1);
     System.arraycopy(ar, index, res, index+1, ar.length-index);
@@ -25,11 +25,11 @@ public static int[] insert(int[] ar, int index, int number){
 }
 
 public static int[] remove(int[] numbers, int index){
-    int [] res1 = new int [numbers.length-index+1];
+    int [] res1 = new int [index];
     int [] res = new int [numbers.length-1];
     
-    System.arraycopy(numbers, 0, res1, 0, res1.length);
-    System.arraycopy(numbers, numbers.length-index+2,res,res1.length, numbers.length-index-1);
+    System.arraycopy(numbers, 0, res1, 0, index);
+    System.arraycopy(numbers, index+1,res, index, numbers.length-index-1);
     return res;
 }
 }
