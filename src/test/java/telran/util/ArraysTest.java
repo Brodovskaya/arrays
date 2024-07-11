@@ -5,8 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import static telran.util.Arrays.add;
 import static telran.util.Arrays.insert;
+import static telran.util.Arrays.pushMaxAtEnd;
 import static telran.util.Arrays.remove;
 import static telran.util.Arrays.search;
+import static telran.util.Arrays.sort;
 
 
 public class ArraysTest {
@@ -36,5 +38,26 @@ void removeTest(){
   int index = 3;
   int [] expected = {10, 7, 12, 13, 3, 14};
   assertArrayEquals(expected, remove(numbers, index));
+}
+
+@Test
+void pushMaxAtEndTest(){
+  int [] testNumbers =java.util.Arrays.copyOf(numbers, numbers.length);
+  pushMaxAtEnd(testNumbers);
+  assertEquals(14, testNumbers[testNumbers.length-1]);
+  assertEquals(13, testNumbers[testNumbers.length-2]);
+  testNumbers = new int[]{20, -10, 10, -17};
+  pushMaxAtEnd(testNumbers);
+  assertEquals(20, testNumbers[testNumbers.length-1]);
+  
+}
+@Test
+void sortTest(){
+  int [] testNumbers =java.util.Arrays.copyOf(numbers, numbers.length);
+  int[] expected = {-4, 3, 7, 10, 12, 13, 14};
+  sort(testNumbers);
+  assertArrayEquals(expected,testNumbers);
+  
+
 }
 }
