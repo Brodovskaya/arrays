@@ -15,20 +15,21 @@ public static int[] add(int [] ar, int number){
 }
 public static int[] insert(int[] ar, int index, int number){
     
-    int [] res1 = new int [index];
+   /* int [] res1 = new int [index];
     System.arraycopy(ar, 0, res1, 0, index-1);
-    add(res1, number);
-    int [] res = java.util.Arrays.copyOf(res1, ar.length+1);
+    add(res1, number);*/
+    int [] res = java.util.Arrays.copyOf(ar, ar.length+1);
+    res [index]=number;
     System.arraycopy(ar, index, res, index+1, ar.length-index);
     
     return res;
 }
 
 public static int[] remove(int[] numbers, int index){
-    int [] res1 = new int [index];
+    //int [] res1 = new int [index];
     int [] res = new int [numbers.length-1];
     
-    System.arraycopy(numbers, 0, res1, 0, index);
+    System.arraycopy(numbers, 0, res, 0, index);
     System.arraycopy(numbers, index+1,res, index, numbers.length-index-1);
     return res;
 }
