@@ -104,7 +104,7 @@ void insertSortedTest(){
 
 @Test
 void isOneSwapTest(){
-  int ar = sort(getRandomArray(N_ELEMENTS))
+  int ar = sort(getRandomArray(N_ELEMENTS));
 
   assertTrue(isOneSwap(swap(Arrays.copyOf(ar, ar.length),N_ELEMENTS / 2, N_ELEMENTS - 1))));
   assertTrue(isOneSwap(swap(Arrays.copyOf(ar, ar.length), 0, N_ELEMENTS - 1))));
