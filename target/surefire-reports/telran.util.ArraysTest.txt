@@ -1,21 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: telran.util.ArraysTest
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.101 s <<< FAILURE! -- in telran.util.ArraysTest
-telran.util.ArraysTest.isOneSwapTest -- Time elapsed: 0.041 s <<< ERROR!
-java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 5
-	at telran.util.Arrays.swap(Arrays.java:47)
-	at telran.util.Arrays.isOneSwap(Arrays.java:104)
-	at telran.util.ArraysTest.isOneSwapTest(ArraysTest.java:108)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-
-telran.util.ArraysTest.binarySearchTest -- Time elapsed: 0.008 s <<< ERROR!
-java.lang.ArrayIndexOutOfBoundsException: Index 5 out of bounds for length 5
-	at telran.util.Arrays.binarySearch(Arrays.java:69)
-	at telran.util.ArraysTest.binarySearchTest(ArraysTest.java:89)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 s -- in telran.util.ArraysTest

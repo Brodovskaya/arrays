@@ -60,7 +60,7 @@ public static boolean pushMaxAtEnd(int [] ar, int length){
         public static int binarySearch(int [] ar, int key){
             
             int start = 0;
-            int end = ar.length;
+            int end = ar.length-1;
             int res = -1;
 
             while(start <= end){
@@ -99,11 +99,12 @@ public static boolean pushMaxAtEnd(int [] ar, int length){
                         }
                         i++;
                     }
-
-                    int[] testArray = java.util.Arrays.copyOf(array, array.length);
-                    swap(testArray, index2, index1);
-                    res = isSortedArray(testArray);
-
+                    if (index1 >= 0) {
+                        if(index2 < 0) index2 = index1+1;
+                        int[] testArray = java.util.Arrays.copyOf(array, array.length);
+                        swap(testArray, index2, index1);
+                        res = isSortedArray(testArray);
+                    }
                     return res;
                 }
 
