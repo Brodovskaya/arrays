@@ -104,14 +104,27 @@ void insertSortedTest(){
 
 @Test
 void isOneSwapTest(){
-  int ar = sort(getRandomArray(N_ELEMENTS));
+  int [] ar1 = {1, 2, 4, 8, 16};
+  assertFalse(isOneSwap(ar1));
 
-  assertTrue(isOneSwap(swap(Arrays.copyOf(ar, ar.length),N_ELEMENTS / 2, N_ELEMENTS - 1))));
-  assertTrue(isOneSwap(swap(Arrays.copyOf(ar, ar.length), 0, N_ELEMENTS - 1))));
+  int [] ar2 = {1, 2, 16, 8, 4};
+  assertTrue(isOneSwap(ar2));
+
+  int [] ar3 = {1, 16, 8, 2, 4};
+  assertFalse(isOneSwap(ar3));
+
+  int [] ar4 = {16, 2, 4, 8, 1};
+  assertTrue(isOneSwap(ar4));
+
+
+
 }
 @Test
 void isSortedArrayTest(){
-  assertTrue(isSortedArray(sort(getRandomArray(N_ELEMENTS))));
+  int [] expected_0 = getRandomArray(N_ELEMENTS);
+  sort(expected_0);
+
+  assertTrue(isSortedArray(expected_0));
   assertFalse(isSortedArray(new int[] {0, 1, 2, 3, 5, 4}));
 }
 
@@ -204,7 +217,5 @@ private int[] getRandomArray(int nElements) {
 
 }*/
 
-    private boolean isSorted(int[] i) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+   
 }
