@@ -1,5 +1,7 @@
 package telran.util;
 
+import java.lang.reflect.Array;
+
 public class Arrays {
 public static int search(int[] ar, int key){
     int index =0;
@@ -30,12 +32,15 @@ public static int[] remove(int[] numbers, int index){
     System.arraycopy(numbers, index+1,res, index, numbers.length-index-1);
     return res;
 }
-public static void pushMaxAtEnd(int [] ar){
-    for(int i = 1; i < ar.length; i++){
-        if (ar[i] < ar[i-1]){
-            swap(ar, i, i-1);
+public static boolean pushMaxAtEnd(int [] ar, int length){
+    boolean res = true;
+    for(int i = 0; i < length; i++){
+        if (ar[i] > ar[i+1]){
+            res = false;
+            swap(ar, i, i+1);
         }
     }
+    return res;
 }
 
     private static void swap(int[] ar, int i, int j) {
@@ -44,8 +49,77 @@ public static void pushMaxAtEnd(int [] ar){
         ar[j]=tmp;
     }
     public static void sort(int [] ar){
-        for(int i=0; i< ar.length; i++){
-            pushMaxAtEnd(ar);
+        int length = ar.length;
+        boolean flSorted = false;
+        while (!flSorted){
+            length--;
+            flSorted = pushMaxAtEnd(ar, length);
+            }
         }
-    }
-}
+
+        public static int binarySearch(int [] ar, int key){
+            
+            int start = 0;
+            int end = ar.length;
+            int res = -1;
+
+            while(start <= end){
+                int index = start + ((end -start) / 2);
+                
+                if (ar[index]<key){
+                    start = index + 1;
+                } else if (ar[index]>key){
+                    end = index - 1;
+                } else {
+                    res = index;
+                    break;
+                }
+            }
+            return res == -1 ? (-start-1) : res;
+
+        }
+            public static int[] insertSorted(int [] arSorted, int number){
+                int index = binarySearch(arSorted, number);
+                if (index < 0) index = - index - 1;
+                return insert(arSorted, index, number);
+            }
+
+                public static boolean isOneSwap(int [] array){
+                    boolean res = false;
+                    int i = 0;
+                    int index1 = -1, index2 = -1;
+
+                    while(i<array.length-1){
+                        if(array[i] > array[i+1]){
+                            if (index1 < 0){
+                                index1 = i;
+                            } else {
+                                index2 = i + 1;
+                            }
+                        }
+                        i++;
+                    }
+
+                    int[] testArray = java.util.Arrays.copyOf(array, array.length);
+                    swap(testArray, index2, index1);
+                    res = isSortedArray(testArray);
+
+                    return res;
+                }
+
+            public static boolean isSortedArray(int [] ar){
+                boolean res = true;
+
+                for(int i = 0; i < ar.length - 1; i++ ){
+                    if (ar[i]>ar[i+1]){
+                        res = false;
+                        break;
+                    }
+                }
+                return res;
+            }
+
+        }
+
+    
+
