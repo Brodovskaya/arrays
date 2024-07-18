@@ -1,14 +1,22 @@
 package telran.util;
-//package telran.util.test;
-
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import static telran.util.Arrays.*;
 
 import java.util.Random;
-import java.util.random.RandomGenerator;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+
+import static telran.util.Arrays.add;
+import static telran.util.Arrays.binarySearch;
+import static telran.util.Arrays.insert;
+import static telran.util.Arrays.insertSorted;
+import static telran.util.Arrays.isOneSwap;
+import static telran.util.Arrays.remove;
+import static telran.util.Arrays.search;
+import static telran.util.Arrays.sort;
 public class ArraysTest {
 private static final int N_ELEMENTS = 1_000;
 int[] numbers = {10, 7, 12, -4, 13, 3, 14};
@@ -75,147 +83,56 @@ private int[] getRandomArray(int nElements) {
     }
     return res;
 }
-
 @Test
-void binarySearchTest(){
-  int [] ar = getRandomArray(N_ELEMENTS);
-  sort(ar);
-
-  assertEquals(N_ELEMENTS / 2, binarySearch(ar, ar[N_ELEMENTS / 2]));
-  assertEquals(N_ELEMENTS / 4, binarySearch(ar, ar[N_ELEMENTS / 4]));
-  assertEquals(-1, binarySearch(new int[] {-5, 0, 5, 10, 15}, -10));
-  assertEquals(-2, binarySearch(new int[] {-5, 0, 5, 10, 15}, -1));
-  assertEquals(2, binarySearch(new int[] {-5, 0, 5, 10, 15}, 5));
-  assertEquals(-6, binarySearch(new int[] {-5, 0, 5, 10, 15}, 20));
-}
-
-@Test
-void insertSortedTest(){
-  int[] ar = {0, 2, 8};
-  int[] expected_1 ={ 0, 2, 4, 8};
-  int[] expected_2 ={ 0, 1, 2, 8};
-  int[] expected_3 ={ -1, 0, 2, 8};
-  int[] expected_4 ={ 0, 2, 2, 8};
-    assertArrayEquals(expected_1, insertSorted(ar, 4));
-    assertArrayEquals(expected_2, insertSorted(ar, 1));
-    assertArrayEquals(expected_3, insertSorted(ar, -1));
-    assertArrayEquals(expected_4, insertSorted(ar, 2));
-}
-
-@Test
-void isOneSwapTest(){
-  int [] ar1 = {1, 2, 4, 8, 16};
-  assertFalse(isOneSwap(ar1));
-
-  int [] ar2 = {1, 2, 16, 8, 4};
-  assertTrue(isOneSwap(ar2));
-
-  int [] ar3 = {1, 16, 8, 2, 4};
-  assertFalse(isOneSwap(ar3));
-
-  int [] ar4 = {16, 2, 4, 8, 1};
-  assertTrue(isOneSwap(ar4));
-
-
-
+void binarySearchTest() {
+int [] arSorted = {10, 20, 30, 40, 50};
+//existing keys
+assertEquals(0, binarySearch(arSorted, 10));
+assertEquals(4, binarySearch(arSorted, 50));
+assertEquals(2, binarySearch(arSorted, 30));
+//not existing keys
+assertEquals(-1, binarySearch(arSorted, 5));
+assertEquals(-3, binarySearch(arSorted, 25));
+assertEquals(-6, binarySearch(arSorted, 55));
 }
 @Test
-void isSortedArrayTest(){
-  int [] expected_0 = getRandomArray(N_ELEMENTS);
-  sort(expected_0);
-
-  assertTrue(isSortedArray(expected_0));
-  assertFalse(isSortedArray(new int[] {0, 1, 2, 3, 5, 4}));
-}
-
-/*package telran.util;
-import static org.junit.jupiter.api.Assertions.*;
-
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.ClassOrderer.Random;
-import org.junit.jupiter.api.Test;
-import java.util.Random;
-
-import static telran.util.Arrays.*;
-/*
-import static telran.util.Arrays.add;
-import static telran.util.Arrays.insert;
-import static telran.util.Arrays.pushMaxAtEnd;
-import static telran.util.Arrays.remove;
-import static telran.util.Arrays.search;
-import static telran.util.Arrays.sort;
-
-public class ArraysTest {
-private static final int N_ELEMENTS = 1000;
-int[] numbers = {10, 7, 12, -4, 13, 3, 14};
-@Test
-void searchTest(){
-    assertEquals(0, search(numbers, 10));
-    assertEquals(6, search(numbers, 14));
-    assertEquals(3, search(numbers, -4));
-    assertEquals(-1, search(numbers, 100));
-}
-@Test
-void addTest(){
-  int newNumber = 100;
-  int [] expected = {10, 7, 12, -4, 13, 3, 14, 100};  
-  assertArrayEquals(expected, add(numbers, newNumber));
-}
-@Test
-void insertTest(){
-  int number = 15;
-  int index = 4;
-  int [] expected = {10, 7, 12, -4, 15, 13, 3, 14};
-  assertArrayEquals(expected, insert(numbers, index, number));
-}
-@Test
-void removeTest(){
-  int index = 3;
-  int [] expected = {10, 7, 12, 13, 3, 14};
-  assertArrayEquals(expected, remove(numbers, index));
-}
-/*
-@Test
-void pushMaxAtEndTest(){
-  int [] testNumbers =java.util.Arrays.copyOf(numbers, numbers.length);
-  pushMaxAtEnd(testNumbers);
-  assertEquals(14, testNumbers[testNumbers.length-1]);
-  assertEquals(13, testNumbers[testNumbers.length-2]);
-  testNumbers = new int[]{20, -10, 10, -17};
-  pushMaxAtEnd(testNumbers);
-  assertEquals(20, testNumbers[testNumbers.length-1]);
-  
-}
-
-@Test
-void sortTest() {
-    int [] testNumbers = java.util.Arrays.copyOf(numbers, numbers.length);
-    int[] expected = {-4, 3, 7, 10,  12,  13,  14};
-    sort(testNumbers);
-    assertArrayEquals(expected, testNumbers);
-}
-@Test
-void sortTestRandomArray() {
-    int[] array = getRandomArray(N_ELEMENTS);
-    int limit = array.length - 1;
-    sort(array);
-    for(int i = 0; i < limit; i++) {
-        assertTrue(array[i] <= array[i + 1]);
+void insertSortedTest() {
+    int[] expected = {5, 10, 10, 20, 25, 30, 40, 50, 55};
+    int [] insertedNumbers = {10, 55, 5, 25};
+    int [] actual = {10, 20, 30, 40, 50};
+    for(int i = 0; i < insertedNumbers.length; i++) {
+        actual = insertSorted(actual, insertedNumbers[i]);
     }
+    assertArrayEquals(expected, actual);
 }
-private int[] getRandomArray(int nElements) {
-    int[] res = new int[nElements];
-    Random random = new Random();
-    for(int i = 0; i < nElements; i++) {
-        res[i] = random.nextInt();
-    }
-    return res;
+@Test
+void isOneSwapTest() {
+    
+int [] arTrue1 = {1, 2, 10, 4, 7, 3};
+int [] arTrue2 = {1, 2, 10, 4, 4, 20};
+int [] arTrue3 = {1, 2, 10, 4, 20, 30};
+int [] arTrue4 = {10, 2, 1, 10, 20, 30};
+int [] arFalse1 = {20, 3, 3, 10, 20, 30};
+int []arFalse2 = {1, 2, 10, 4, 7, 5};
+int []arFalse3 = {1, 2, 3, 4, 5, 10};
+int [][] arraysTrue = {arTrue1, arTrue2, arTrue3, arTrue4};
+int [][] arraysFalse = {arFalse1, arFalse2, arFalse3};
+for(int i = 0; i < arraysTrue.length; i++) {
+    assertTrue(isOneSwap(arraysTrue[i]), "" + (i + 1));
+}
+for(int i = 0; i < arraysFalse.length; i++) {
+    assertFalse(isOneSwap(arraysFalse[i]), "" + (i + 1));
 }
 }
 
-}*/
-
-   
+@Test
+void sortAnyTypeTest(){
+    String [] strings = {"lmn", "cfta", "w", "aa"};
+    String [] expectedASCII ={"aa", "cfta", "lmn", "w"};
+    String [] expectedLength = {"w", "aa", "lmn", "cfta"};
+    sort(strings, new ComparatorASCII());
+    assertArrayEquals(expectedASCII, strings);
+    sort(strings, new ComparatorLength());
+    assertArrayEquals(expectedLength, strings);
+}
 }
