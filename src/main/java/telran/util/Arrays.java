@@ -186,7 +186,20 @@ public class Arrays {
 
     }
     public static <T> int binarySearch(T[] array, T key, Comparator<T> comp) {
-        //TODO
-        return -1;
+        int left=0;
+        int right = array.length-1;
+        int middle = (left+right)/2;
+        while (left<right){
+            if(comp.compare(array [middle], key) < 0){
+                left = middle + 1;
+            } else if (comp.compare(array [middle], key) > 0){
+                right = middle - 1;
+            }else {
+                break;
+            }
+            middle = (left + right) / 2;
+        }
+
+        return left > right ? -(left + 1) : middle;
     }
 }
