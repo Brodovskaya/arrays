@@ -1,4 +1,19 @@
 -------------------------------------------------------------------------------
 Test set: telran.util.ArraysTest
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 s -- in telran.util.ArraysTest
+Tests run: 14, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.133 s <<< FAILURE! -- in telran.util.ArraysTest
+telran.util.ArraysTest.evenOddSorting -- Time elapsed: 0.015 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: array contents differ at index [0], expected: <-100> but was: <99>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertArrayEquals.failArraysNotEqual(AssertArrayEquals.java:440)
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayElementsEqual(AssertArrayEquals.java:389)
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:346)
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:159)
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:155)
+	at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1456)
+	at telran.util.ArraysTest.evenOddSorting(ArraysTest.java:173)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+

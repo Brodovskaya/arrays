@@ -1,3 +1,7 @@
-telran\util\ComparatorASCII.class
+telran\util\OddNumbersPredicate.class
+telran\util\ComparatorNumbers.class
 telran\util\ComparatorLength.class
+telran\util\Person.class
 telran\util\ArraysTest.class
+telran\util\ComparatorASCII.class
+telran\util\EvenOddComparator.class

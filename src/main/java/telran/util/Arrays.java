@@ -1,6 +1,7 @@
 package telran.util;
 
 import java.util.Comparator;
+import java.util.function.Predicate;
 
 public class Arrays {
     public static int search(int[] ar, int key) {
@@ -186,20 +187,48 @@ public class Arrays {
 
     }
     public static <T> int binarySearch(T[] array, T key, Comparator<T> comp) {
-        int left=0;
-        int right = array.length-1;
-        int middle = (left+right)/2;
-        while (left<right){
-            if(comp.compare(array [middle], key) < 0){
-                left = middle + 1;
-            } else if (comp.compare(array [middle], key) > 0){
-                right = middle - 1;
-            }else {
+        int begin = 0;
+        int end = array.length - 1;
+        int mid = (begin + end) / 2;
+
+        while (begin <= end) {
+            int cmp = comp.compare(array[mid], key);
+
+            if (cmp < 0) {
+                begin = mid + 1;
+            } else if (cmp > 0) {
+                end = mid - 1;
+            } else {
                 break;
             }
-            middle = (left + right) / 2;
+
+            mid = (begin + end) / 2;
         }
 
-        return left > right ? -(left + 1) : middle;
+        return begin > end ? -(begin + 1) : mid;
+    }
+
+    public static <T> int binarySearch(T[] array, T key) {
+        
+        return binarySearch(array, key, (Comparator<T>) Comparator.naturalOrder());
+    }
+    public static <T> T[] insert(T [] array, int index, T item){
+        T[] res = java.util.Arrays.copyOf(array, array.length + 1);
+        System.arraycopy(array, index, res, index + 1, array.length - index);
+        res[index] = item;
+        return res;
+    }
+    public static <T> T[] find(T[] array, Predicate <T> predicate){
+        T[] result = java.util.Arrays.copyOf(array, 0);
+        for (int i = 0; i < array.length; i++){
+            if(predicate.test(array[i])){
+                result = insert(result, result.length, array[i]);
+            }
+        }
+        return result;
+    }
+    public static <T> T[] removeIf (T[] array, Predicate <T> predicate){
+        //TODO
+        return find(array, predicate.negate());
     }
 }
