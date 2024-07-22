@@ -228,7 +228,7 @@ public class Arrays {
         return result;
     }
     public static <T> T[] removeIf (T[] array, Predicate <T> predicate){
-        //TODO
+        
         return find(array, predicate.negate());
     }
 }

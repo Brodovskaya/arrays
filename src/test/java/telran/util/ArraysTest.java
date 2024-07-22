@@ -17,6 +17,7 @@ import static telran.util.Arrays.insert;
 import static telran.util.Arrays.insertSorted;
 import static telran.util.Arrays.isOneSwap;
 import static telran.util.Arrays.remove;
+import static telran.util.Arrays.removeIf;
 import static telran.util.Arrays.search;
 import static telran.util.Arrays.sort;
 public class ArraysTest {
@@ -180,6 +181,13 @@ void findTest(){
   assertArrayEquals(expected, find(array, new OddNumbersPredicate()));
   
 }
+@Test
+void removeIfTest(){
+    Integer[] array_1 = {7, -8, 10, -100, 13,-10, 99};
+    Integer[] expected_1 = {7, 10, 13, 99};
+    
+    assertArrayEquals(expected_1, removeIf(array_1, new OddNumbersPredicate()));
 
+}
     
 }

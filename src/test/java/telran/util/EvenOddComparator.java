@@ -20,7 +20,7 @@ public class EvenOddComparator implements Comparator<Integer>{
             int comp = Integer.compare(arg0, arg1);
             res = isEvenArg0 ? comp : - comp;
         } else {
-            res = isEvenArg1 ? -1 : 1;
+            res = isEvenArg0 ? -1 : 1;
         }
               
         return res;

@@ -10,9 +10,6 @@ import java.util.function.Predicate;
 
 public class OddNumbersPredicate implements Predicate <Integer>{
 
-    public OddNumbersPredicate() {
-    }
-
     @Override
     public boolean test(Integer t) {
 
