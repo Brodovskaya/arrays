@@ -183,8 +183,8 @@ void findTest(){
 }
 @Test
 void removeIfTest(){
-    Integer[] array_1 = {7, -8, 10, -100, 13,-10, 99};
-    Integer[] expected_1 = {7, 10, 13, 99};
+    Integer[] array_1 = {7, -8, 10, -100, 13, -10, 99};
+    Integer[] expected_1 = {-8, 10, -100, -10};
     
     assertArrayEquals(expected_1, removeIf(array_1, new OddNumbersPredicate()));
 
